@@ -204,16 +204,16 @@ Assignment 4/codes/pdf_plot.py
 \label{fig:t_pdf}
 \end{figure}
 \item Find the theoretical expressions for the PDF and CDF of $T$.\\
-\solution
-We know that if $X$ and $Y$ are independent distributions, then we  can use convolution formula for getting the PDF of $F_{X+Y}$ as 
-\begin{equation}
-f_{X+Y}(t)=\int_{\infty}^{\infty} f_X(x)f_Y(t-x)dx
-\end{equation}
-And the CDF of $F_{X+Y}$ is given as
-\begin{equation}
-F_{X+Y}(t)=\int_{-\infty}^t f_{X+Y}(x)dx
-\end{equation}
-Accordingly, for our casee $U_1$ and $U_2$ are uniform i.i.d. random variables in [0, 1]. Then, $0 \leq U_1 + U_2 \leq 2$.
+\solution We know that $T=U_1+U_2$. Accordingly,
+\begin{align*}
+F_T(t)&= \pr{U_1 + U_2 \leq t} \\
+&= \int_{0}^{1} \pr{U_1+U_2\leq t~|~U_1=x}f_{U_1}(x)dx\\
+&=\int_{0}^{1} \pr{x+U_2\leq t~|~U_1=x}f_{U_1}(x)dx\\
+&=\int_{0}^{1} \pr{U_2\leq t-x~|~U_1=x}f_{U_1}(x)dx\\
+&=\int_{0}^{1} \pr{U_2\leq t-x}f_{U_1}(x)dx\\
+&= \int_{0}^{1}F_{U_2}(t - x)f_{U_1}(x)dx
+\end{align*}
+where $U_1$ and $U_2$ are uniform random variables in [0, 1]. Clearly, $0 \leq U_1 + U_2 \leq 2$.\\
 Again we know that 
 \begin{align*}
 f_{U_1}(x)=
@@ -243,31 +243,26 @@ f_{U_2}(x)=
       1 & \text{for x $>$ 1}
     \end{cases}  
 \end{align*}
-Now we deal with the interval from 0 to 2. It is useful to break this down into two cases (i) $0\leq t< 1$ and (ii) $1\leq t <2$.\\ \\
-Case (i): $0\leq t<1$. The product $f_{U_1}(x)f_{U_2}(t-x)$ is 1 in someplaces and 0 elsewhere. So, for $f_{U_2}(t-x)=1$ we need $t-x\geq 0$ and thus $x\leq t$ and therefore, we integrate from $x=0$ and $x=t$. 
+Now to deal with the interval from 0 to 2, it is useful to break this down into four cases:
+\begin{enumerate}
+\item[(i)] $t < 0$: In this case, it is clear that $F_T(t) = 0$.
+\item[(ii)] $0 \leq t < 1$: We need $t-x\geq 0$ and thus $x\leq t$ and therefore, we integrate from $x=0$ and $x=t$. 
 \begin{align*}
-f_{T}(t)&=\int_{0}^{t} 1.1 dt=t
-\\
-F_T(t)&=\int_{0}^{t} f_{T}(t)dt
-\\
-&=\int_{0}^{t} t dt
-\\
+F_T(t)&=\int_{0}^{t}F_{U_2}(t - x)f_{U_1}(x)dx\\
+&=\int_{0}^{t}(t - x)dx\\
+&=\left[tx-\frac{x^2}{2}\right]_0^t\\
 &=\frac{t^2}{2}
 \end{align*}
-Case (ii): For $1\leq t <2$, Again for $f_{U_2}(t-x)=1$ we need $t-x\leq 1$ and thus $x\leq t-1$ and therefore, we integrate from $x=t-1$ and $x=1$. 
+\item[(iii)] $1 \leq t < 2$: Here, we need $t-x\leq 1$ and thus $x\leq t-1$ and therefore, we integrate from $0$ to $x=t-1$ and $x=t-1$ to $x=1$. 
 \begin{align*}
-f_{T}(t)&=\int_{t-1}^{1} 1.1 dx
-\\
-&=\left[t\right]_{t-1}^{1}=2-t
-\\
-F_T(t)&=\int_{0}^{t} f_{T}(t)dt
-\\
-&=\int_{0}^{1} tdt +\int_{1}^{t} (2-t)dt 
-\\
-&=\left[\frac{t^2}{2}\right]_0^1+\left[2t-\frac{t^2}{2}\right]_1^t
-\\
-&=2t-\frac{t^2}{2}-1
+F_T(t)&=\int_{0}^{t-1}F_{U_2}(t - x)f_{U_1}(x)dx +\\
+&\int_{t-1}^{1}F_{U_2}(t - x)F_{U_1}(x)dx\\
+&= \int_{0}^{t - 1}dx + \int_{t - 1}^{1}(t - x)dx \\
+&= t - 1 + t(2 - t) - \frac{1 - (t - 1)^2}{2} \\
+&= -\frac{t^2}{2} + 2t - 1
 \end{align*}
+\item[(iv)] $t \geq 2$: Also $F_T(t) = 1$.
+\end{enumerate}
 So, the CDF for T is given by 
 \begin{equation}
 F_{T}(t)=\pr{T \le t} =
@@ -278,7 +273,11 @@ F_{T}(t)=\pr{T \le t} =
       1 & x\geq 2
     \end{cases}  
 \end{equation}
-and the PDF for T is given by 
+We can take the derivative with respect to $t$ of the CDF to get the PDF and thus 
+\begin{equation*}
+f_T(t)=\frac{d}{dz}F_t(t)=\int_{0}^{1} f_{U_2}(t-x)f_{U_1}(x)dx
+\end{equation*}
+Thus, the PDF for T is given by 
 \begin{equation}
 f_{T}(t)=
 	 \begin{cases}

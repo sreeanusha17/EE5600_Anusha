@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.9)  15 AUG 2022 18:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.9)  19 AUG 2022 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -810,21 +810,19 @@ File: ./figs/t_pdf.pdf Graphic file (type pdf)
 <use ./figs/t_pdf.pdf>
 Package pdftex.def Info: ./figs/t_pdf.pdf  used on input line 202.
 (pdftex.def)             Requested size: 252.0pt x 189.00429pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./figs/t_cdf.pdf> <./figs/t_pdf.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 245--248
-
- []
-
-[2] (./main.aux)
+ <./figs/t_cdf.pdf> <./figs/t_pdf.pdf>] [2] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 743926D437D0594F0490A81189FA69F9;161.
  ) 
 Here is how much of TeX's memory you used:
- 15737 strings out of 478287
- 240826 string characters out of 5849290
+ 15735 strings out of 478287
+ 240802 string characters out of 5849290
  750775 words of memory out of 5000000
  33653 multiletter control sequences out of 15000+600000
  537674 words of font info for 169 fonts, out of 8000000 for 9000
@@ -838,10 +836,10 @@ fonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (2 pages, 74108 bytes).
+Output written on main.pdf (2 pages, 64358 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
+ 128 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
+ 21 named destinations out of 1000 (max. 500000)
  19 words of extra memory for PDF output out of 10000 (max. 10000000)
 
